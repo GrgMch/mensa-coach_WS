@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mensa-Coach</title>
+<style>
+  :root {
+    --accent: #0f8b6c; --accent-soft: #e2f3ed; --bg: #f3f5f8; --card: #ffffff;
+    --text: #1c2230; --muted: #6a7284; --line: #e3e7ee; --radius: 18px;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+         background: var(--bg); color: var(--text); }
+  header { position: sticky; top: 0; z-index: 5; background: #fff; border-bottom: 1px solid var(--line); }
+  .kopf { max-width: 1200px; margin: 0 auto; padding: 14px 28px; display: flex; align-items: center; gap: 14px; }
+  .logo { width: 40px; height: 40px; border-radius: 12px; background: var(--accent); color: #fff;
+          display: grid; place-items: center; font-weight: 700; font-size: 18px; }
+  h1 { font-size: 20px; margin: 0; }
+  .stand { color: var(--muted); font-size: 13px; margin-top: 2px; }
+  .umschalter { margin-left: auto; display: flex; background: var(--bg); border-radius: 999px; padding: 4px; }
+  .umschalter button { border: 0; background: transparent; padding: 9px 18px; border-radius: 999px;
+                       font: inherit; font-size: 14px; color: var(--muted); cursor: pointer; }
+  .umschalter button.aktiv { background: #fff; color: var(--accent); font-weight: 600;
+                             box-shadow: 0 1px 3px rgba(0,0,0,.12); }
+  main { max-width: 1200px; margin: 0 auto; padding: 24px 28px 48px; }
+  .tabs { display: flex; gap: 10px; margin-bottom: 22px; }
+  .tabs button { border: 1px solid var(--line); background: #fff; border-radius: 14px; padding: 10px 18px;
+                 font: inherit; font-size: 14px; color: var(--text); cursor: pointer; min-width: 92px; }
+  .tabs button small { display: block; color: var(--muted); font-size: 12px; margin-top: 2px; }
+  .tabs button.aktiv { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+  .tabs button.aktiv small { color: rgba(255,255,255,.85); }
+  .raster { display: grid; grid-template-columns: 1fr 320px; gap: 24px; align-items: start; }
+  .karte { background: var(--card); border-radius: var(--radius); padding: 20px;
+           box-shadow: 0 1px 2px rgba(16,24,40,.06), 0 6px 18px rgba(16,24,40,.05); }
+  .empfehlung { padding: 28px; border: 2px solid var(--accent); margin-bottom: 22px; }
+  .marke { display: inline-block; background: var(--accent); color: #fff; font-size: 12px; font-weight: 600;
+           letter-spacing: .04em; text-transform: uppercase; padding: 5px 12px; border-radius: 999px; }
+  .kat { color: var(--muted); font-size: 13px; margin-top: 12px; }
+  .karte h3 { margin: 4px 0 12px; font-size: 17px; line-height: 1.35; }
+  .empfehlung h3 { font-size: 26px; margin-bottom: 16px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { background: var(--bg); border-radius: 999px; padding: 6px 12px; font-size: 13px; }
+  .chip.gruen { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+  .geschaetzt { color: var(--muted); font-size: 11px; font-style: italic; }
+  .fuss { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 14px; }
+  .ampel { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+  .punkt { width: 12px; height: 12px; border-radius: 50%; background: #c4c9d2; }
+  .punkt.gut { background: #2f9e5b; } .punkt.mittel { background: #e3a400; } .punkt.schlecht { background: #d64545; }
+  .score { font-size: 13px; color: var(--muted); }
+  .score b { color: var(--accent); font-size: 15px; }
+  .begr { margin: 14px 0 0; color: var(--muted); font-size: 14px; }
+  .liste { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+  .teilen { margin-top: 20px; border: 0; background: var(--accent); color: #fff; font: inherit; font-weight: 600;
+            padding: 12px 20px; border-radius: 12px; cursor: pointer; }
+  .teilen:hover { filter: brightness(1.08); }
+  aside h2 { font-size: 17px; margin: 0 0 16px; }
+  aside h4 { font-size: 13px; color: var(--muted); font-weight: 600; margin: 20px 0 10px;
+             text-transform: uppercase; letter-spacing: .04em; }
+  .schalter { display: flex; align-items: center; justify-content: space-between; padding: 10px 0;
+              border-bottom: 1px solid var(--line); font-size: 15px; cursor: pointer; }
+  .schalter input { width: 20px; height: 20px; accent-color: var(--accent); cursor: pointer; }
+  .gewicht { margin-bottom: 16px; }
+  .gewicht .zeile { display: flex; justify-content: space-between; font-size: 15px; margin-bottom: 6px; }
+  .gewicht .zeile b { color: var(--accent); }
+  .gewicht input { width: 100%; accent-color: var(--accent); }
+  .skala { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); }
+  .hinweis { font-size: 12px; color: var(--muted); line-height: 1.5; margin: 8px 0 0; }
+  .leer { color: var(--muted); text-align: center; padding: 40px 20px; }
+  .ueberschrift { font-size: 15px; color: var(--muted); margin: 0 0 12px; font-weight: 600; }
+</style>
+</head>
+<body>
+<header>
+  <div class="kopf">
+    <div class="logo">M</div>
+    <div><h1>Mensa-Coach</h1><div class="stand" id="stand">Lade Speiseplan …</div></div>
+    <div class="umschalter" id="umschalter">
+      <button data-mensa="flandernstrasse">Flandernstraße</button>
+      <button data-mensa="stadtmitte">Stadtmitte</button>
+    </div>
+  </div>
+</header>
+<main>
+  <div class="tabs" id="tabs"></div>
+  <div class="raster">
+    <section id="inhalt"></section>
+    <aside class="karte">
+      <h2>Meine Prioritäten</h2>
+      <h4>Filter</h4>
+      <label class="schalter">nur vegan <input type="checkbox" id="vegan"></label>
+      <label class="schalter">nur vegetarisch <input type="checkbox" id="vegetarisch"></label>
+      <h4>Wie wichtig ist dir …</h4>
+      <div id="gewichte"></div>
+      <p class="hinweis">Wenig Kalorien und ein niedriger Preis zählen als gut. Die Werte werden pro Tag
+        auf 0 bis 1 gebracht und mit deinen Gewichten gemittelt. Das Gericht mit der höchsten Punktzahl ist
+        die Tagesempfehlung.</p>
+    </aside>
+  </div>
+</main>
+<script>
+  const MENSEN = { flandernstrasse: "Mensa Flandernstraße", stadtmitte: "Mensa Stadtmitte" };
+  const KRITERIEN = [
+    { k: "gesundheit", label: "Gesundheit", wert: g => g.gesundheit, hoch: true },
+    { k: "kalorien", label: "Kalorien", wert: g => g.kcal_portion, hoch: false },
+    { k: "preis", label: "Preis", wert: g => g.preis_studierende, hoch: false },
+    { k: "eiweiss", label: "Eiweiß", wert: g => g.eiweiss_100g, hoch: true }
+  ];
+  const BESITZER = location.hostname.split(".")[0];
+  const REPO = location.pathname.split("/").filter(Boolean)[0] || location.hostname;
+  const SPEICHER = "mensaCoachPrioritaeten";
+
+  let zustand = { mensa: "flandernstrasse", vegan: false, vegetarisch: false,
+                  gesundheit: 2, kalorien: 1, preis: 1, eiweiss: 1 };
+  try { Object.assign(zustand, JSON.parse(localStorage.getItem(SPEICHER) || "{}")); } catch (e) {}
+  const daten = {};
+  let gewaehlterTag = null;
+
+  function speichern() {
+    try { localStorage.setItem(SPEICHER, JSON.stringify(zustand)); } catch (e) {}
+  }
+  function esc(t) {
+    return String(t ?? "").replace(/[&<>"]/g, z => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[z]));
+  }
+  function euro(p) { return p == null ? "Preis fehlt" : p.toFixed(2).replace(".", ",") + " €"; }
+  function heuteIso() { return new Date().toLocaleDateString("sv-SE"); }
+  function kurzDatum(iso) { const [j, m, t] = iso.split("-"); return t + "." + m + "."; }
+
+  function bewerten(liste) {
+    const summe = KRITERIEN.reduce((s, c) => s + Number(zustand[c.k]), 0);
+    const grenzen = KRITERIEN.map(c => {
+      const w = liste.map(c.wert).filter(v => v != null);
+      return [Math.min(...w), Math.max(...w)];
+    });
+    liste.forEach(g => {
+      let s = 0;
+      KRITERIEN.forEach((c, i) => {
+        const v = c.wert(g), [lo, hi] = grenzen[i];
+        let n = 0.5;
+        if (v != null) n = hi === lo ? 1 : (c.hoch ? (v - lo) / (hi - lo) : (hi - v) / (hi - lo));
+        s += Number(zustand[c.k]) * n;
+      });
+      g.punkte = summe ? s / summe : 0;
+    });
+    return liste.sort((a, b) => b.punkte - a.punkte);
+  }
+
+  function ampel(g) {
+    const n = g.gesundheit;
+    const klasse = n == null ? "" : n >= 7 ? "gut" : n >= 4 ? "mittel" : "schlecht";
+    const text = n == null ? "Gesundheit unbekannt" : `Gesundheit ${n}/10`;
+    return `<div class="ampel"><span class="punkt ${klasse}"></span>${text}
+            ${n == null ? "" : '<span class="geschaetzt">geschätzt</span>'}</div>`;
+  }
+
+  function chips(g) {
+    let h = `<span class="chip">${euro(g.preis_studierende)}</span>`;
+    if (g.kcal_portion != null) h += `<span class="chip">ca. ${g.kcal_portion} kcal <span class="geschaetzt">geschätzt</span></span>`;
+    else if (g.kcal_100g != null) h += `<span class="chip">${Math.round(g.kcal_100g)} kcal / 100 g</span>`;
+    if (g.eiweiss_100g != null) h += `<span class="chip">${String(g.eiweiss_100g).replace(".", ",")} g Eiweiß / 100 g</span>`;
+    if (g.vegan) h += `<span class="chip gruen">vegan</span>`;
+    else if (g.vegetarisch) h += `<span class="chip gruen">vegetarisch</span>`;
+    return `<div class="chips">${h}</div>`;
+  }
+
+  function karte(g, gross) {
+    return `<div class="karte ${gross ? "empfehlung" : ""}">
+      ${gross ? '<span class="marke">Tagesempfehlung</span>' : ""}
+      <div class="kat">${esc(g.kategorie)}</div>
+      <h3>${esc(g.name)}</h3>
+      ${chips(g)}
+      <div class="fuss">${ampel(g)}<div class="score">Punktzahl <b>${Math.round(g.punkte * 100)}</b></div></div>
+      ${g.begruendung ? `<p class="begr">${esc(g.begruendung)} <span class="geschaetzt">geschätzt</span></p>` : ""}
+      ${gross ? '<button class="teilen" id="teilen">Per Mail teilen</button>' : ""}
+    </div>`;
+  }
+
+  function teilen(g, tag) {
+    const betreff = `Mensa-Tipp für ${tag.wochentag}: ${g.name}`;
+    const zeilen = [
+      `Meine Tagesempfehlung in der ${MENSEN[zustand.mensa]} am ${tag.wochentag}, ${kurzDatum(tag.datum)}:`, "",
+      `${g.name} (${g.kategorie})`,
+      `Preis für Studierende: ${euro(g.preis_studierende)}`,
+      g.kcal_portion != null ? `Kalorien: ca. ${g.kcal_portion} kcal pro Portion (geschätzt)` : "",
+      g.gesundheit != null ? `Gesundheit: ${g.gesundheit}/10 (geschätzt)` : "",
+      g.begruendung ? `Begründung: ${g.begruendung} (geschätzt)` : "",
+      g.vegan ? "vegan" : g.vegetarisch ? "vegetarisch" : "", "",
+      `Gefunden mit dem Mensa-Coach: ${location.href}`
+    ].filter((z, i, a) => z !== "" || a[i - 1] !== "");
+    location.href = "mailto:?subject=" + encodeURIComponent(betreff) + "&body=" + encodeURIComponent(zeilen.join("\n"));
+  }
+
+  function zeichnen() {
+    document.querySelectorAll("#umschalter button").forEach(b =>
+      b.classList.toggle("aktiv", b.dataset.mensa === zustand.mensa));
+    const plan = daten[zustand.mensa];
+    const inhalt = document.getElementById("inhalt");
+    if (!plan) { inhalt.innerHTML = '<div class="karte leer">Lade Speiseplan …</div>'; return; }
+    if (plan.fehler) {
+      inhalt.innerHTML = `<div class="karte leer">Der Speiseplan konnte nicht geladen werden.<br><small>${esc(plan.fehler)}</small></div>`;
+      document.getElementById("stand").textContent = MENSEN[zustand.mensa];
+      return;
+    }
+    document.getElementById("stand").textContent = `${MENSEN[zustand.mensa]} · Stand ${plan.stand}`;
+    const tage = plan.tage || [];
+    if (!tage.some(t => t.datum === gewaehlterTag)) {
+      gewaehlterTag = (tage.find(t => t.datum === heuteIso()) || tage[0] || {}).datum;
+    }
+    document.getElementById("tabs").innerHTML = tage.map(t =>
+      `<button data-tag="${t.datum}" class="${t.datum === gewaehlterTag ? "aktiv" : ""}">
+         ${t.wochentag.slice(0, 2)}<small>${kurzDatum(t.datum)}</small></button>`).join("");
+    const tag = tage.find(t => t.datum === gewaehlterTag);
+    if (!tag || !tag.gerichte.length) {
+      inhalt.innerHTML = '<div class="karte leer">Für diesen Tag gibt es keinen Speiseplan.</div>';
+      return;
+    }
+    const passend = tag.gerichte.map(g => ({ ...g }))
+      .filter(g => (!zustand.vegan || g.vegan) && (!zustand.vegetarisch || g.vegetarisch));
+    if (!passend.length) {
+      inhalt.innerHTML = '<div class="karte leer">Heute passt kein Gericht zu deinen Filtern.</div>';
+      return;
+    }
+    const sortiert = bewerten(passend);
+    inhalt.innerHTML = karte(sortiert[0], true) +
+      (sortiert.length > 1 ? '<p class="ueberschrift">Weitere Gerichte</p><div class="liste">' +
+        sortiert.slice(1).map(g => karte(g, false)).join("") + "</div>" : "");
+    document.getElementById("teilen").onclick = () => teilen(sortiert[0], tag);
+  }
+
+  async function laden(mensa) {
+    if (daten[mensa]) return zeichnen();
+    zeichnen();
+    const url = `https://raw.githubusercontent.com/${BESITZER}/${REPO}/main/data/${mensa}.json?t=${Date.now()}`;
+    try {
+      const antwort = await fetch(url, { cache: "no-store" });
+      if (!antwort.ok) throw new Error(`Fehler ${antwort.status} bei ${url}`);
+      daten[mensa] = await antwort.json();
+    } catch (e) {
+      daten[mensa] = { fehler: e.message };
+    }
+    zeichnen();
+  }
+
+  document.getElementById("gewichte").innerHTML = KRITERIEN.map(c => `
+    <div class="gewicht">
+      <div class="zeile"><span>${c.label}</span><b id="wert-${c.k}">${zustand[c.k]}</b></div>
+      <input type="range" min="0" max="3" step="1" id="${c.k}" value="${zustand[c.k]}">
+      <div class="skala"><span>egal</span><span>sehr wichtig</span></div>
+    </div>`).join("");
+  KRITERIEN.forEach(c => document.getElementById(c.k).addEventListener("input", e => {
+    zustand[c.k] = Number(e.target.value);
+    document.getElementById("wert-" + c.k).textContent = e.target.value;
+    speichern(); zeichnen();
+  }));
+  ["vegan", "vegetarisch"].forEach(k => {
+    const feld = document.getElementById(k);
+    feld.checked = !!zustand[k];
+    feld.addEventListener("change", () => { zustand[k] = feld.checked; speichern(); zeichnen(); });
+  });
+  document.getElementById("umschalter").addEventListener("click", e => {
+    const b = e.target.closest("button");
+    if (!b) return;
+    zustand.mensa = b.dataset.mensa; speichern(); laden(zustand.mensa);
+  });
+  document.getElementById("tabs").addEventListener("click", e => {
+    const b = e.target.closest("button");
+    if (!b) return;
+    gewaehlterTag = b.dataset.tag; zeichnen();
+  });
+  laden(zustand.mensa);
+</script>
+</body>
+</html>
