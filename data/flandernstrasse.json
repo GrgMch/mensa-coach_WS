@@ -1,0 +1,179 @@
+{
+  "stand": "2026-11-26 08:46",
+  "tage": [
+    {
+      "datum": "2026-11-23",
+      "wochentag": "Montag",
+      "gerichte": [
+        {
+          "kategorie": "Veganer Renner",
+          "name": "Penne mit Champignons und Cocktailtomaten",
+          "preis_studierende": 2.99,
+          "vegan": true,
+          "vegetarisch": true,
+          "kcal_100g": 97.0,
+          "eiweiss_100g": 3.5,
+          "gesundheit": 7,
+          "kcal_portion": 291,
+          "begruendung": "Vollkorn, wenig Fett, moderate Kalorien."
+        },
+        {
+          "kategorie": "Hauptgericht",
+          "name": "Köttbullar mit Rahmsauce ,Preiselbeeren und Salzkartoffeln",
+          "preis_studierende": 5.4,
+          "vegan": false,
+          "vegetarisch": false,
+          "kcal_100g": 108.0,
+          "eiweiss_100g": 4.2,
+          "gesundheit": 6,
+          "kcal_portion": 324,
+          "begruendung": "Fleisch + Sauce, etwas fettig."
+        }
+      ]
+    },
+    {
+      "datum": "2026-11-24",
+      "wochentag": "Dienstag",
+      "gerichte": [
+        {
+          "kategorie": "Veganer Renner",
+          "name": "Vegane Paella",
+          "preis_studierende": 2.99,
+          "vegan": true,
+          "vegetarisch": true,
+          "kcal_100g": 150.0,
+          "eiweiss_100g": 3.0,
+          "gesundheit": 5,
+          "kcal_portion": 450,
+          "begruendung": "Hoher Kalorien, wenig Protein, vegane Zutaten."
+        },
+        {
+          "kategorie": "Hauptgericht",
+          "name": "Gebackener Fleischkäse mit Zwiebelsauce und Kartoffelpüree",
+          "preis_studierende": 4.3,
+          "vegan": false,
+          "vegetarisch": false,
+          "kcal_100g": 127.0,
+          "eiweiss_100g": 5.5,
+          "gesundheit": 5,
+          "kcal_portion": 381,
+          "begruendung": "Fleischkäse fettreich, moderate Kalorien."
+        }
+      ]
+    },
+    {
+      "datum": "2026-11-25",
+      "wochentag": "Mittwoch",
+      "gerichte": [
+        {
+          "kategorie": "Veganer Renner",
+          "name": "Kürbis-Karotten-Gnocchi-Ragout",
+          "preis_studierende": 2.99,
+          "vegan": true,
+          "vegetarisch": true,
+          "kcal_100g": 111.0,
+          "eiweiss_100g": 2.8,
+          "gesundheit": 7,
+          "kcal_portion": 333,
+          "begruendung": "Gemüse, moderate Kalorien, wenig Protein."
+        },
+        {
+          "kategorie": "Hauptgericht",
+          "name": "Kartoffel-Gemüseauflauf",
+          "preis_studierende": 3.3,
+          "vegan": false,
+          "vegetarisch": true,
+          "kcal_100g": 106.0,
+          "eiweiss_100g": 4.4,
+          "gesundheit": 7,
+          "kcal_portion": 318,
+          "begruendung": "Gemüseauflauf, ausgewogen, moderate Kalorien."
+        },
+        {
+          "kategorie": "Hauptgericht",
+          "name": "Spaghetti Bolognese mit Reibekäse",
+          "preis_studierende": 4.9,
+          "vegan": false,
+          "vegetarisch": false,
+          "kcal_100g": 176.0,
+          "eiweiss_100g": 8.5,
+          "gesundheit": 4,
+          "kcal_portion": 528,
+          "begruendung": "Sehr kalorienreich, viel Fett, aber Protein."
+        }
+      ]
+    },
+    {
+      "datum": "2026-11-26",
+      "wochentag": "Donnerstag",
+      "gerichte": [
+        {
+          "kategorie": "Veganer Renner",
+          "name": "Schupfnudel-Sauerkraut-Pfanne",
+          "preis_studierende": 2.99,
+          "vegan": true,
+          "vegetarisch": true,
+          "kcal_100g": 99.0,
+          "eiweiss_100g": 2.1,
+          "gesundheit": 8,
+          "kcal_portion": 297,
+          "begruendung": "Leicht, viel Gemüse, niedrige Kalorien."
+        },
+        {
+          "kategorie": "Hauptgericht",
+          "name": "Gorgonzola-Nuss-Pasta mit Birne",
+          "preis_studierende": 4.6,
+          "vegan": false,
+          "vegetarisch": true,
+          "kcal_100g": 163.0,
+          "eiweiss_100g": 5.8,
+          "gesundheit": 4,
+          "kcal_portion": 489,
+          "begruendung": "Reich an Fett und Kalorien, wenig Protein."
+        },
+        {
+          "kategorie": "Hauptgericht",
+          "name": "Schweinebraten mit Rahmsauce und Spätzle",
+          "preis_studierende": 5.5,
+          "vegan": false,
+          "vegetarisch": false,
+          "kcal_100g": 159.0,
+          "eiweiss_100g": 10.1,
+          "gesundheit": 3,
+          "kcal_portion": 477,
+          "begruendung": "Fettreich, hohe Kalorien, wenig ausgewogen."
+        }
+      ]
+    },
+    {
+      "datum": "2026-11-27",
+      "wochentag": "Freitag",
+      "gerichte": [
+        {
+          "kategorie": "Veganer Renner",
+          "name": "Reispfanne mit Naturreis und Weißkraut-,Paprikagemüse",
+          "preis_studierende": 2.99,
+          "vegan": true,
+          "vegetarisch": true,
+          "kcal_100g": 94.0,
+          "eiweiss_100g": 3.0,
+          "gesundheit": 8,
+          "kcal_portion": 282,
+          "begruendung": "Leicht, viel Gemüse, niedrige Kalorien."
+        },
+        {
+          "kategorie": "Hauptgericht",
+          "name": "Paniertes Seelachsfilet mit Remouladensauce und Kartoffelsalat",
+          "preis_studierende": 5.4,
+          "vegan": false,
+          "vegetarisch": false,
+          "kcal_100g": 187.0,
+          "eiweiss_100g": 6.7,
+          "gesundheit": 3,
+          "kcal_portion": 561,
+          "begruendung": "Panierte Fisch, schwere Sauce, hohe Kalorien."
+        }
+      ]
+    }
+  ]
+}
