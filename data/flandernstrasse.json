@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-26 08:46",
+  "stand": "2026-11-27 07:05",
   "tage": [
     {
       "datum": "2026-11-23",
@@ -15,7 +15,7 @@
           "eiweiss_100g": 3.5,
           "gesundheit": 7,
           "kcal_portion": 291,
-          "begruendung": "Vollkorn, wenig Fett, moderate Kalorien."
+          "begruendung": "Ausgewogen, moderate Kalorien, wenig Fett"
         },
         {
           "kategorie": "Hauptgericht",
@@ -27,7 +27,7 @@
           "eiweiss_100g": 4.2,
           "gesundheit": 6,
           "kcal_portion": 324,
-          "begruendung": "Fleisch + Sauce, etwas fettig."
+          "begruendung": "Kalorienreich, aber proteinreich"
         }
       ]
     },
@@ -43,9 +43,9 @@
           "vegetarisch": true,
           "kcal_100g": 150.0,
           "eiweiss_100g": 3.0,
-          "gesundheit": 5,
+          "gesundheit": 8,
           "kcal_portion": 450,
-          "begruendung": "Hoher Kalorien, wenig Protein, vegane Zutaten."
+          "begruendung": "Vollkorn, Gemüse, aber höherer Kaloriengehalt"
         },
         {
           "kategorie": "Hauptgericht",
@@ -57,7 +57,7 @@
           "eiweiss_100g": 5.5,
           "gesundheit": 5,
           "kcal_portion": 381,
-          "begruendung": "Fleischkäse fettreich, moderate Kalorien."
+          "begruendung": "Fettig, wenig Ballaststoffe"
         }
       ]
     },
@@ -75,7 +75,7 @@
           "eiweiss_100g": 2.8,
           "gesundheit": 7,
           "kcal_portion": 333,
-          "begruendung": "Gemüse, moderate Kalorien, wenig Protein."
+          "begruendung": "Gemüse, moderate Kalorien"
         },
         {
           "kategorie": "Hauptgericht",
@@ -87,7 +87,7 @@
           "eiweiss_100g": 4.4,
           "gesundheit": 7,
           "kcal_portion": 318,
-          "begruendung": "Gemüseauflauf, ausgewogen, moderate Kalorien."
+          "begruendung": "Gemüseanteil, ausgewogenes Protein"
         },
         {
           "kategorie": "Hauptgericht",
@@ -99,7 +99,7 @@
           "eiweiss_100g": 8.5,
           "gesundheit": 4,
           "kcal_portion": 528,
-          "begruendung": "Sehr kalorienreich, viel Fett, aber Protein."
+          "begruendung": "Hohe Kalorien, viel Fett"
         }
       ]
     },
@@ -115,9 +115,9 @@
           "vegetarisch": true,
           "kcal_100g": 99.0,
           "eiweiss_100g": 2.1,
-          "gesundheit": 8,
+          "gesundheit": 7,
           "kcal_portion": 297,
-          "begruendung": "Leicht, viel Gemüse, niedrige Kalorien."
+          "begruendung": "Leicht, Gemüse, niedriger Protein"
         },
         {
           "kategorie": "Hauptgericht",
@@ -127,9 +127,9 @@
           "vegetarisch": true,
           "kcal_100g": 163.0,
           "eiweiss_100g": 5.8,
-          "gesundheit": 4,
+          "gesundheit": 5,
           "kcal_portion": 489,
-          "begruendung": "Reich an Fett und Kalorien, wenig Protein."
+          "begruendung": "Kalorienreich, viel Fett und Zucker"
         },
         {
           "kategorie": "Hauptgericht",
@@ -139,9 +139,9 @@
           "vegetarisch": false,
           "kcal_100g": 159.0,
           "eiweiss_100g": 10.1,
-          "gesundheit": 3,
+          "gesundheit": 4,
           "kcal_portion": 477,
-          "begruendung": "Fettreich, hohe Kalorien, wenig ausgewogen."
+          "begruendung": "Fettig, hohe Kalorien, wenig Gemüse"
         }
       ]
     },
@@ -159,7 +159,7 @@
           "eiweiss_100g": 3.0,
           "gesundheit": 8,
           "kcal_portion": 282,
-          "begruendung": "Leicht, viel Gemüse, niedrige Kalorien."
+          "begruendung": "Vollkorn, viel Gemüse, niedrige Kalorien"
         },
         {
           "kategorie": "Hauptgericht",
@@ -169,9 +169,9 @@
           "vegetarisch": false,
           "kcal_100g": 187.0,
           "eiweiss_100g": 6.7,
-          "gesundheit": 3,
+          "gesundheit": 5,
           "kcal_portion": 561,
-          "begruendung": "Panierte Fisch, schwere Sauce, hohe Kalorien."
+          "begruendung": "Panierung und Sauce erhöhen Kalorien"
         }
       ]
     }
